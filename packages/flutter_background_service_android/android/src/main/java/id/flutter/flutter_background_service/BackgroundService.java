@@ -163,7 +163,7 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
 
             PendingIntent pi = PendingIntent.getActivity(BackgroundService.this, 99778, i, flags);
 
-            notificationContent = 'mv101 입니다아';
+            notificationContent = "mv101 입니다아";
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, "FOREGROUND_DEFAULT")
                     .setSmallIcon(R.drawable.ic_bg_service_small)
                     .setAutoCancel(true)
