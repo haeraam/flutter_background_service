@@ -42,7 +42,7 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
     private DartExecutor.DartCallback dartCallback;
     private boolean isManuallyStopped = false;
 
-    String notificationTitle = "Background Service";
+    String notificationTitle = "MV101입니다.";
     String notificationContent = "Running";
     private static final String LOCK_NAME = BackgroundService.class.getName()
             + ".Lock";
@@ -144,7 +144,7 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
             int importance = NotificationManager.IMPORTANCE_LOW;
             NotificationChannel channel = new NotificationChannel("FOREGROUND_DEFAULT", name, importance);
             channel.setDescription(description);
-
+            channel.setShowBadge(false);
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
@@ -163,6 +163,7 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
 
             PendingIntent pi = PendingIntent.getActivity(BackgroundService.this, 99778, i, flags);
 
+            notificationContent = 'mv101 입니다아';
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, "FOREGROUND_DEFAULT")
                     .setSmallIcon(R.drawable.ic_bg_service_small)
                     .setAutoCancel(true)
