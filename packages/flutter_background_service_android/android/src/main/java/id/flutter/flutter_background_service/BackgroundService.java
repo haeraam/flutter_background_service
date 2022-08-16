@@ -143,7 +143,8 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
 
             int importance = NotificationManager.IMPORTANCE_LOW;
             NotificationChannel channel = new NotificationChannel("FOREGROUND_DEFAULT", name, importance);
-            channel.setDescription(description).setShowBadge(false);
+            channel.setDescription(description);
+            channel.setShowBadge(false);
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
