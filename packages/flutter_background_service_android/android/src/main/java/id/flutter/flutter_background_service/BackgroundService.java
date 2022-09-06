@@ -42,7 +42,7 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
     private DartExecutor.DartCallback dartCallback;
     private boolean isManuallyStopped = false;
 
-    String notificationTitle = "MV101입니다.";
+    String notificationTitle = "MV101";
     String notificationContent = "Running";
     private static final String LOCK_NAME = BackgroundService.class.getName()
             + ".Lock";
@@ -163,7 +163,7 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
 
             PendingIntent pi = PendingIntent.getActivity(BackgroundService.this, 99778, i, flags);
 
-            notificationContent = "mv101 입니다아";
+            notificationContent = "mv101";
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, "FOREGROUND_DEFAULT")
                     .setSmallIcon(R.drawable.ic_bg_service_small)
                     .setAutoCancel(true)
