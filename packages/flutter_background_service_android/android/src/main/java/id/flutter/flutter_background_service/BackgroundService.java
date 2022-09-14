@@ -168,8 +168,9 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
                     .setSmallIcon(R.drawable.ic_bg_service_small)
                     .setAutoCancel(true)
                     .setOngoing(true)
-                    .setContentTitle(notificationTitle)
-                    .setContentText(notificationContent)
+                    .setShowWhen(false)
+                    // .setContentTitle(notificationTitle)
+                    // .setContentText(notificationContent)
                     .setContentIntent(pi);
 
             startForeground(99778, mBuilder.build());
