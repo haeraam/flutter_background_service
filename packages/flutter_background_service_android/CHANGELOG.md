@@ -1,3 +1,37 @@
+## 2.3.2
+
+ - **FIX**: using Runnable instead of lambda. ([9cda867d](https://github.com/ekasetiawans/flutter_background_service/commit/9cda867d8f2dc84cf1f7f112a3e87b1fa7dc1d3d))
+ - **DOCS**: update license. ([0c17e5de](https://github.com/ekasetiawans/flutter_background_service/commit/0c17e5dee091daa622470c8e3ba16c22ae03f8b3))
+ - **DOCS**: updated README. ([3885e301](https://github.com/ekasetiawans/flutter_background_service/commit/3885e3017729a557b0b0b7ccdb968692ba7c8a52))
+
+## 2.3.1
+
+ - **DOCS**: update license. ([0c17e5de](https://github.com/ekasetiawans/flutter_background_service/commit/0c17e5dee091daa622470c8e3ba16c22ae03f8b3))
+
+## 2.3.0
+
+ - **FEAT**: move android service to separated process. ([bd2e6f07](https://github.com/ekasetiawans/flutter_background_service/commit/bd2e6f075ea8a7db231c7586b8f6244bb0399ff4))
+
+## 2.2.2
+
+ - Update a dependency to the latest release.
+
+## 2.2.1
+
+ - Update a dependency to the latest release.
+
+## 2.2.0
+
+ - **FEAT**: expose notification id for foreground service. ([47b7089c](https://github.com/ekasetiawans/flutter_background_service/commit/47b7089c5e4ab18f3a35558d6c7ec2d50fc8d3f1))
+
+## 2.1.1
+
+ - **PERF**: improve android background service. ([e01a3fa2](https://github.com/ekasetiawans/flutter_background_service/commit/e01a3fa2938479f31a525c23ff888c03b496fa70))
+
+## 2.1.0
+
+ - **FEAT**: using entrypoint instead of dart callback and added initial notification info for android. ([b0fc8f32](https://github.com/ekasetiawans/flutter_background_service/commit/b0fc8f32d59fa582c37fcd6e2349fab32aac245b))
+
 ## 2.0.3
 
  - **FIX**: wakelock not released. ([e427f3b7](https://github.com/ekasetiawans/flutter_background_service/commit/e427f3b70138ec26f9671c2617f9061f25eade6f))

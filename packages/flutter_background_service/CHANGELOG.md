@@ -1,3 +1,44 @@
+## 2.3.5
+
+ - **FIX**: using Runnable instead of lambda. ([9cda867d](https://github.com/ekasetiawans/flutter_background_service/commit/9cda867d8f2dc84cf1f7f112a3e87b1fa7dc1d3d))
+
+## 2.3.4
+
+ - **DOCS**: update license. ([0c17e5de](https://github.com/ekasetiawans/flutter_background_service/commit/0c17e5dee091daa622470c8e3ba16c22ae03f8b3))
+
+## 2.3.3
+
+ - **FIX**: wrong dependency version. ([34e66e13](https://github.com/ekasetiawans/flutter_background_service/commit/34e66e13f04afe760d7b4087cc7052756dcb2a9c))
+
+## 2.3.2
+
+ - **DOCS**: updated README. ([2fc9ae66](https://github.com/ekasetiawans/flutter_background_service/commit/2fc9ae66f5538ab45f3690cdaee94f89b31f16e2))
+ - **DOCS**: updated README. ([3885e301](https://github.com/ekasetiawans/flutter_background_service/commit/3885e3017729a557b0b0b7ccdb968692ba7c8a52))
+
+## 2.3.0
+
+ - **FEAT**: move android service to separated process. ([bd2e6f07](https://github.com/ekasetiawans/flutter_background_service/commit/bd2e6f075ea8a7db231c7586b8f6244bb0399ff4))
+
+## 2.2.4
+
+ - **DOCS**: update example project for custom notification. ([d1e90d86](https://github.com/ekasetiawans/flutter_background_service/commit/d1e90d864d281747ab40170e22d91601b29927a6))
+
+## 2.2.3
+
+ - Update a dependency to the latest release.
+
+## 2.2.2
+
+ - Update a dependency to the latest release.
+
+## 2.2.1
+
+ - Update a dependency to the latest release.
+
+## 2.2.0
+
+ - **FEAT**: using entrypoint instead of dart callback and added initial notification info for android. ([b0fc8f32](https://github.com/ekasetiawans/flutter_background_service/commit/b0fc8f32d59fa582c37fcd6e2349fab32aac245b))
+
 ## 2.1.3
 
  - Update a dependency to the latest release.

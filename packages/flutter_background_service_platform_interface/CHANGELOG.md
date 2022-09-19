@@ -1,3 +1,19 @@
+## 2.1.3
+
+ - **DOCS**: update license. ([0c17e5de](https://github.com/ekasetiawans/flutter_background_service/commit/0c17e5dee091daa622470c8e3ba16c22ae03f8b3))
+
+## 2.1.2
+
+ - **FIX**: remove duplicated properties. ([891c2029](https://github.com/ekasetiawans/flutter_background_service/commit/891c20291df9612810035219af98d732d99d200c))
+
+## 2.1.1
+
+ - **FIX**: missing foregroundServiceNotificationId. ([e49f6137](https://github.com/ekasetiawans/flutter_background_service/commit/e49f613726120f144b04e2246c43360756d57e5b))
+
+## 2.1.0
+
+ - **FEAT**: using entrypoint instead of dart callback and added initial notification info for android. ([b0fc8f32](https://github.com/ekasetiawans/flutter_background_service/commit/b0fc8f32d59fa582c37fcd6e2349fab32aac245b))
+
 ## 2.0.0
 
  - Graduate package to a stable release. See pre-releases prior to this version for changelog entries.
