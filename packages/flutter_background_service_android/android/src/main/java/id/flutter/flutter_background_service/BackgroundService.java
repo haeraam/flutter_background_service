@@ -182,8 +182,8 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
                     .setAutoCancel(true)
                     .setOngoing(true)
                     .setShowWhen(false)
-                    // .setContentTitle(notificationTitle)
-                    // .setContentText(notificationContent)
+                    .setContentTitle(notificationTitle)
+                    .setContentText(notificationContent)
                     .setContentIntent(pi);
 
             startForeground(notificationId, mBuilder.build());
