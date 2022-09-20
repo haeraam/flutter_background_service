@@ -1,3 +1,15 @@
+## 2.4.0
+
+ - **FEAT**: revert to single process. ([515dde6a](https://github.com/ekasetiawans/flutter_background_service/commit/515dde6a49e50087c6f613ff0de8e1bd111a315b))
+
+## 2.3.4
+
+ - **REFACTOR**: refactor java code. ([d7db0c09](https://github.com/ekasetiawans/flutter_background_service/commit/d7db0c092dcfc0af0bb8f1175ea82f3f0ccfe908))
+
+## 2.3.3
+
+ - **FIX**: make final variable for backward compatibility of gradle. ([d7087ba0](https://github.com/ekasetiawans/flutter_background_service/commit/d7087ba07a580e7d16d4e416cde43ddfb531e664))
+
 ## 2.3.2
 
  - **FIX**: using Runnable instead of lambda. ([9cda867d](https://github.com/ekasetiawans/flutter_background_service/commit/9cda867d8f2dc84cf1f7f112a3e87b1fa7dc1d3d))
