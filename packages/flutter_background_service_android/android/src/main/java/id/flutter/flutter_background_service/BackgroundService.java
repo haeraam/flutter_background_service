@@ -256,9 +256,9 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
     @SuppressLint("WakelockTimeout")
     private void runService() {
         try {
-            Log.d(TAG, "isRunning.get():" + isRunning.get().toString());
-            Log.d(TAG, "backgroundEngine != null" + (backgroundEngine != null).toString());
-            Log.d(TAG, "!backgroundEngine.getDartExecutor().isExecutingDart()" + (!backgroundEngine.getDartExecutor().isExecutingDart()).toString());
+            Log.d(TAG, "isRunning.get():" + isRunning.get());
+            Log.d(TAG, "backgroundEngine != null" + (backgroundEngine != null));
+            Log.d(TAG, "!backgroundEngine.getDartExecutor().isExecutingDart()" + (!backgroundEngine.getDartExecutor().isExecutingDart()));
 
 
             if (isRunning.get() || (backgroundEngine != null && !backgroundEngine.getDartExecutor().isExecutingDart())) {
