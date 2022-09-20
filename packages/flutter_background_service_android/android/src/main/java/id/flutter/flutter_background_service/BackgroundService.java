@@ -262,7 +262,7 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
                 return;
             }
 
-
+Log.d(TAG, "되나 테스트한번 해본다");
             Log.d(TAG, "runService");
             getLock(getApplicationContext()).acquire();
 
