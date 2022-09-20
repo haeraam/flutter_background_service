@@ -256,9 +256,6 @@ public class BackgroundService extends Service implements MethodChannel.MethodCa
     @SuppressLint("WakelockTimeout")
     private void runService() {
         try {
-            Log.d(TAG, "isRunning.get():" + isRunning.get());
-            Log.d(TAG, "backgroundEngine != null" + (backgroundEngine != null));
-
             if (isRunning.get() || (backgroundEngine != null && !backgroundEngine.getDartExecutor().isExecutingDart())) {
                 Log.d(TAG, "Service already running, using existing service");
                 return;
