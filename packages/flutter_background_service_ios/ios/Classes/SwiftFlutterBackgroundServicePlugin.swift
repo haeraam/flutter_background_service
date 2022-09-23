@@ -55,7 +55,7 @@ public class SwiftFlutterBackgroundServicePlugin: FlutterPluginAppLifeCycleDeleg
     @available(iOS 13.0, *)
     func scheduleAppRefresh() {
        let request = BGAppRefreshTaskRequest(identifier: "dev.flutter.background.refresh")
-       request.earliestBeginDate = Date(timeIntervalSinceNow: 10.0)
+       request.earliestBeginDate = Date(timeIntervalSinceNow: 1)
             
        do {
           try BGTaskScheduler.shared.submit(request)
