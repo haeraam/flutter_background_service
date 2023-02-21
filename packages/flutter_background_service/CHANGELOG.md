@@ -1,3 +1,42 @@
+## 2.4.6
+
+ - **DOCS**: updated README.md. ([9345b16f](https://github.com/ekasetiawans/flutter_background_service/commit/9345b16f7c69e7acac1ea5d8a5985b97092a1220))
+
+## 2.4.5
+
+ - **DOCS**: updated README. ([f9e96ab4](https://github.com/ekasetiawans/flutter_background_service/commit/f9e96ab4978f348342703cf1de011bc59f6b9e4c))
+
+## 2.4.4
+
+ - Update a dependency to the latest release.
+
+## 2.4.3
+
+ - **DOCS**: update README. ([5fc18ced](https://github.com/ekasetiawans/flutter_background_service/commit/5fc18ced43cc7fc1df3209eaa21ef9d424d41779))
+
+## 2.4.2
+
+ - **DOCS**: add documentation on configure method. ([b9612afe](https://github.com/ekasetiawans/flutter_background_service/commit/b9612afe593e766e740c69ee01a04b4f9d2ec83a))
+
+## 2.4.1
+
+ - **PERF**: improve handle app refresh ios. ([48e333d7](https://github.com/ekasetiawans/flutter_background_service/commit/48e333d708cb8296c8e6bf1bb151c7cbd95ea7ee))
+
+## 2.4.0
+
+ - **REFACTOR**: split code into separate class. ([678226ba](https://github.com/ekasetiawans/flutter_background_service/commit/678226ba08966303713faa718f5a9b46e448c5d1))
+ - **FIX**: ios onBackground. ([4eb6b70d](https://github.com/ekasetiawans/flutter_background_service/commit/4eb6b70d005d43079fa53989a1352ae153ea03ae))
+ - **FEAT**: allow using custom task identifier. ([555a0618](https://github.com/ekasetiawans/flutter_background_service/commit/555a06182230c126c7f0a43f6e94317e62ccb6c3))
+
+## 2.3.10
+
+ - Update a dependency to the latest release.
+
+## 2.3.9
+
+ - **FIX**: added @pragma. ([0f90cc7d](https://github.com/ekasetiawans/flutter_background_service/commit/0f90cc7d6f1ae9b0e2ab6132151e27b88814afe1))
+ - **DOCS**: update FAQ. ([53215976](https://github.com/ekasetiawans/flutter_background_service/commit/532159768bc4a14701940c8166440bb1940aa1b5))
+
 ## 2.3.8
 
  - Update a dependency to the latest release.

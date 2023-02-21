@@ -8,10 +8,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_background_service_platform_interface/flutter_background_service_platform_interface.dart';
 
 @pragma('vm:entry-point')
-Future<void> entrypoint() async {
+Future<void> entrypoint(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   final service = AndroidServiceInstance._();
-  final int handle = await service._getHandler();
+  final int handle = int.parse(args.first);
   final callbackHandle = CallbackHandle.fromRawHandle(handle);
   final onStart = PluginUtilities.getCallbackFromHandle(callbackHandle);
   if (onStart != null) {
@@ -65,7 +65,8 @@ class FlutterBackgroundServiceAndroid extends FlutterBackgroundServicePlatform {
       {
         "background_handle": handle.toRawHandle(),
         "is_foreground_mode": androidConfiguration.isForegroundMode,
-        "auto_start_on_boot": androidConfiguration.autoStart,
+        "auto_start": androidConfiguration.autoStart,
+        "auto_start_on_boot": androidConfiguration.autoStartOnBoot,
         "initial_notification_content":
             androidConfiguration.initialNotificationContent,
         "initial_notification_title":
@@ -184,10 +185,6 @@ class AndroidServiceInstance extends ServiceInstance {
   Future<bool> isForegroundService() async {
     final result = await _channel.invokeMethod<bool>('isForegroundMode');
     return result ?? false;
-  }
-
-  Future<int> _getHandler() async {
-    return await _channel.invokeMethod('getHandler');
   }
 
   Future<void> setAutoStartOnBootMode(bool value) async {

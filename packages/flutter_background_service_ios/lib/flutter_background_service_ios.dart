@@ -8,10 +8,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_background_service_platform_interface/flutter_background_service_platform_interface.dart';
 
 @pragma('vm:entry-point')
-Future<void> foregroundEntrypoint() async {
+Future<void> foregroundEntrypoint(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   final service = IOSServiceInstance._();
-  final int handle = await service._getForegroundHandler();
+  final int handle = int.parse(args.first);
   final callbackHandle = CallbackHandle.fromRawHandle(handle);
   final onStart = PluginUtilities.getCallbackFromHandle(callbackHandle);
   if (onStart != null) {
@@ -20,11 +20,10 @@ Future<void> foregroundEntrypoint() async {
 }
 
 @pragma('vm:entry-point')
-Future<void> backgroundEntrypoint() async {
+Future<void> backgroundEntrypoint(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   final service = IOSServiceInstance._();
-  final int handle = await service._getBackgroundHandler();
-
+  final int handle = int.parse(args.first);
   final callbackHandle = CallbackHandle.fromRawHandle(handle);
   final onStart = PluginUtilities.getCallbackFromHandle(callbackHandle)
       as FutureOr<bool> Function(ServiceInstance instance)?;
@@ -68,23 +67,20 @@ class FlutterBackgroundServiceIOS extends FlutterBackgroundServicePlatform {
     _channel.setMethodCallHandler(_handle);
 
     final CallbackHandle? foregroundHandle =
-        PluginUtilities.getCallbackHandle(iosConfiguration.onForeground);
-    if (foregroundHandle == null) {
-      return false;
-    }
+        iosConfiguration.onForeground == null
+            ? null
+            : PluginUtilities.getCallbackHandle(iosConfiguration.onForeground!);
 
     final CallbackHandle? backgroundHandle =
-        PluginUtilities.getCallbackHandle(iosConfiguration.onBackground);
-
-    if (backgroundHandle == null) {
-      return false;
-    }
+        iosConfiguration.onBackground == null
+            ? null
+            : PluginUtilities.getCallbackHandle(iosConfiguration.onBackground!);
 
     final result = await _channel.invokeMethod(
       "configure",
       {
-        "background_handle": backgroundHandle.toRawHandle(),
-        "foreground_handle": foregroundHandle.toRawHandle(),
+        "background_handle": backgroundHandle?.toRawHandle(),
+        "foreground_handle": foregroundHandle?.toRawHandle(),
         "auto_start": iosConfiguration.autoStart,
       },
     );
@@ -169,14 +165,6 @@ class IOSServiceInstance extends ServiceInstance {
         },
       ),
     );
-  }
-
-  Future<int> _getForegroundHandler() async {
-    return await _channel.invokeMethod('getForegroundHandler');
-  }
-
-  Future<int> _getBackgroundHandler() async {
-    return await _channel.invokeMethod('getBackgroundHandler');
   }
 
   Future<void> _setBackgroundFetchResult(bool value) async {

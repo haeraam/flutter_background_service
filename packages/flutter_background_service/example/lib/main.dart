@@ -30,6 +30,14 @@ Future<void> initializeService() async {
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
 
+  if (Platform.isIOS) {
+    await flutterLocalNotificationsPlugin.initialize(
+      const InitializationSettings(
+        iOS: IOSInitializationSettings(),
+      ),
+    );
+  }
+
   await flutterLocalNotificationsPlugin
       .resolvePlatformSpecificImplementation<
           AndroidFlutterLocalNotificationsPlugin>()
@@ -66,9 +74,17 @@ Future<void> initializeService() async {
 
 // to ensure this is executed
 // run app from xcode, then from xcode menu, select Simulate Background Fetch
-bool onIosBackground(ServiceInstance service) {
+
+@pragma('vm:entry-point')
+Future<bool> onIosBackground(ServiceInstance service) async {
   WidgetsFlutterBinding.ensureInitialized();
-  print('FLUTTER BACKGROUND FETCH');
+  DartPluginRegistrant.ensureInitialized();
+
+  SharedPreferences preferences = await SharedPreferences.getInstance();
+  await preferences.reload();
+  final log = preferences.getStringList('log') ?? <String>[];
+  log.add(DateTime.now().toIso8601String());
+  await preferences.setStringList('log', log);
 
   return true;
 }
@@ -225,6 +241,9 @@ class _MyAppState extends State<MyApp> {
                 setState(() {});
               },
             ),
+            const Expanded(
+              child: LogView(),
+            ),
           ],
         ),
         floatingActionButton: FloatingActionButton(
@@ -232,6 +251,48 @@ class _MyAppState extends State<MyApp> {
           child: const Icon(Icons.play_arrow),
         ),
       ),
+    );
+  }
+}
+
+class LogView extends StatefulWidget {
+  const LogView({Key? key}) : super(key: key);
+
+  @override
+  State<LogView> createState() => _LogViewState();
+}
+
+class _LogViewState extends State<LogView> {
+  late final Timer timer;
+  List<String> logs = [];
+
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) async {
+      final SharedPreferences sp = await SharedPreferences.getInstance();
+      await sp.reload();
+      logs = sp.getStringList('log') ?? [];
+      if (mounted) {
+        setState(() {});
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    timer.cancel();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      itemCount: logs.length,
+      itemBuilder: (context, index) {
+        final log = logs.elementAt(index);
+        return Text(log);
+      },
     );
   }
 }

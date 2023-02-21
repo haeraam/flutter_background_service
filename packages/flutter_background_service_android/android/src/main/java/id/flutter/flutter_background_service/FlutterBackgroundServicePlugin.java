@@ -35,6 +35,7 @@ public class FlutterBackgroundServicePlugin implements FlutterPlugin, MethodCall
     private MethodChannel channel;
     private Context context;
     private IBackgroundServiceBinder serviceBinder;
+    private boolean mShouldUnbind = false;
 
     @SuppressWarnings("deprecation")
     public static void registerWith(Registrar registrar) {
@@ -42,7 +43,9 @@ public class FlutterBackgroundServicePlugin implements FlutterPlugin, MethodCall
         final MethodChannel channel = new MethodChannel(registrar.messenger(), "id.flutter/background_service_android", JSONMethodCodec.INSTANCE);
         channel.setMethodCallHandler(plugin);
         plugin.channel = channel;
-    }    private final ServiceConnection serviceConnection = new ServiceConnection() {
+    }
+
+    private final ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             serviceBinder = IBackgroundServiceBinder.Stub.asInterface(service);
@@ -62,6 +65,7 @@ public class FlutterBackgroundServicePlugin implements FlutterPlugin, MethodCall
                     @Override
                     public void stop() {
                         if (context != null && serviceBinder != null) {
+                            mShouldUnbind = false;
                             context.unbindService(serviceConnection);
                         }
                     }
@@ -76,6 +80,7 @@ public class FlutterBackgroundServicePlugin implements FlutterPlugin, MethodCall
         @Override
         public void onServiceDisconnected(ComponentName name) {
             try {
+                mShouldUnbind = false;
                 serviceBinder.unbind(binderId);
                 serviceBinder = null;
             } catch (Exception e) {
@@ -88,6 +93,7 @@ public class FlutterBackgroundServicePlugin implements FlutterPlugin, MethodCall
     public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
         this.context = flutterPluginBinding.getApplicationContext();
         this.config = new Config(this.context);
+        mShouldUnbind = false;
 
         mainHandler = new Handler(context.getMainLooper());
 
@@ -107,7 +113,7 @@ public class FlutterBackgroundServicePlugin implements FlutterPlugin, MethodCall
             context.startService(intent);
         }
 
-        context.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
+        mShouldUnbind = context.bindService(intent, serviceConnection, Context.BIND_AUTO_CREATE);
     }
 
     @Override
@@ -120,6 +126,7 @@ public class FlutterBackgroundServicePlugin implements FlutterPlugin, MethodCall
                 long backgroundHandle = arg.getLong("background_handle");
                 boolean isForeground = arg.getBoolean("is_foreground_mode");
                 boolean autoStartOnBoot = arg.getBoolean("auto_start_on_boot");
+                boolean autoStart = arg.getBoolean("auto_start");
                 String initialNotificationTitle = arg.isNull("initial_notification_title") ? null : arg.getString("initial_notification_title");
                 String initialNotificationContent = arg.isNull("initial_notification_content") ? null : arg.getString("initial_notification_content");
                 String notificationChannelId = arg.isNull("notification_channel_id") ? null : arg.getString("notification_channel_id");
@@ -133,7 +140,7 @@ public class FlutterBackgroundServicePlugin implements FlutterPlugin, MethodCall
                 config.setNotificationChannelId(notificationChannelId);
                 config.setForegroundNotificationId(foregroundNotificationId);
 
-                if (autoStartOnBoot) {
+                if (autoStart) {
                     start();
                 }
 
@@ -165,7 +172,7 @@ public class FlutterBackgroundServicePlugin implements FlutterPlugin, MethodCall
 
             result.notImplemented();
         } catch (Exception e) {
-            result.error("100", "Failed read arguments", null);
+            result.error("100", "Failed while read arguments", e.getMessage());
         }
     }
 
@@ -184,8 +191,9 @@ public class FlutterBackgroundServicePlugin implements FlutterPlugin, MethodCall
         channel.setMethodCallHandler(null);
         channel = null;
 
-        if (serviceBinder != null) {
+        if (mShouldUnbind && serviceBinder != null) {
             binding.getApplicationContext().unbindService(serviceConnection);
+            mShouldUnbind = false;
         }
     }
 

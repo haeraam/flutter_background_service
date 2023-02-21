@@ -1,5 +1,3 @@
-# flutter_background_service
-
 A flutter plugin for execute dart code in background.
 
 ## Support me to maintain this plugin continously with a cup of coffee.
@@ -11,7 +9,11 @@ A flutter plugin for execute dart code in background.
 - No additional setting is required.
 - To change notification icon, just add drawable icon with name `ic_bg_service_small`.
 
-> **WARNING**: Starting from 2.3.0 the Service instance will be running on it's own android process (e.g com.package.your:background). It might be more difficult to debugging with breakpoints. Learn more about android process, read https://developer.android.com/guide/components/processes-and-threads.
+> **WARNING**:
+>
+> Please make sure your project already use the version of gradle tools below:
+> - in android/build.gradle ```classpath 'com.android.tools.build:gradle:7.1.2'```
+> - in android/gradle/wrapper/gradle-wrapper.properties ```distributionUrl=https\://services.gradle.org/distributions/gradle-7.4-all.zip```
 
 ### Using custom notification for Foreground Service
 You can make your own custom notification for foreground service. It can give you more power to make notifications more attractive to users, for example adding progressbars, buttons, actions, etc. The example below is using [flutter_local_notifications](https://pub.dev/packages/flutter_local_notifications) plugin, but you can use any other notification plugin. You can follow how to make it below:
@@ -106,7 +108,7 @@ Future<void> onStart(ServiceInstance service) async {
 
 - Enable `background_fetch` capability in xcode (optional), if you wish ios to execute `IosConfiguration.onBackground` callback.
 
-- For iOS 13 (using `BGTaskScheduler`), insert lines below into your ios/Runner/Info.plist
+- For iOS 13 and Later (using `BGTaskScheduler`), insert lines below into your ios/Runner/Info.plist
 
 ```plist
 <key>BGTaskSchedulerPermittedIdentifiers</key>
@@ -115,10 +117,37 @@ Future<void> onStart(ServiceInstance service) async {
 </array>
 ```
 
+- You can also using your own custom identifier
+In `ios/Runner/AppDelegate.swift` add line below
+
+```swift
+import UIKit
+import Flutter
+import flutter_background_service_ios // add this
+
+@UIApplicationMain
+@objc class AppDelegate: FlutterAppDelegate {
+  override func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+  ) -> Bool {
+    /// Add this line
+    SwiftFlutterBackgroundServicePlugin.taskIdentifier = "your.custom.task.identifier"
+
+    GeneratedPluginRegistrant.register(with: self)
+    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+  }
+}
+```
+
 ## Usage
 
-- Call `FlutterBackgroundService.configure` to configure handler that will be executed by the Service.
+- Call `FlutterBackgroundService.configure()` to configure handler that will be executed by the Service.
+
+> It's highly recommended to call this method in `main()` method to ensure the callback handler updated.
+
 - Call `FlutterBackgroundService.start` to start the Service if `autoStart` is not enabled.
+
 - Since the Service using Isolates, You won't be able to share reference between UI and Service. You can communicate between UI and Service using `invoke()` and `on(String method)`.
 
 ## Migration
@@ -139,4 +168,25 @@ Try to disable battery optimization for your app.
 
 ### My notification icon not changed, how to solve it?
 
-Make sure you had created notification icons named `ic_bg_service_small` and placed in res/drawable-mdpi, res/drawable-hdpi, res/drawable-hdpi, res/drawable-xxhdpi for PNGs file, and res/drawable-anydpi-v24 for XML (Vector) file (optional).
+Make sure you had created notification icons named `ic_bg_service_small` and placed in res/drawable-mdpi, res/drawable-hdpi, res/drawable-xhdpi, res/drawable-xxhdpi for PNGs file, and res/drawable-anydpi-v24 for XML (Vector) file.
+
+### Service not running in Release Mode
+
+Add `@pragma('vm:entry-point')` to the `onStart()` method.
+Example:
+
+```dart
+
+@pragma('vm:entry-point')
+void onStart(ServiceInstance service){
+  ...
+}
+```
+
+### Service terminated when app is in background (minimized) on iOS
+
+Keep in your mind, iOS doesn't have a long running service feature like Android. So, it's not possible to keep your application running when it's in background because the OS will suspend your application soon. Currently, this plugin provide onBackground method, that will be executed periodically by `Background Fetch` capability provided by iOS. It cannot be faster than 15 minutes and only alive about 15-30 seconds.
+
+## Discord
+
+Click [here](https://discord.gg/aqk6JjBm) to join to my discord channels

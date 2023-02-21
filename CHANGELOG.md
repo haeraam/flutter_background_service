@@ -3,6 +3,261 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 2022-12-14
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_background_service` - `v2.4.6`](#flutter_background_service---v246)
+
+---
+
+#### `flutter_background_service` - `v2.4.6`
+
+ - **DOCS**: updated README.md. ([9345b16f](https://github.com/ekasetiawans/flutter_background_service/commit/9345b16f7c69e7acac1ea5d8a5985b97092a1220))
+
+
+## 2022-10-12
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_background_service` - `v2.4.5`](#flutter_background_service---v245)
+
+---
+
+#### `flutter_background_service` - `v2.4.5`
+
+ - **DOCS**: updated README. ([f9e96ab4](https://github.com/ekasetiawans/flutter_background_service/commit/f9e96ab4978f348342703cf1de011bc59f6b9e4c))
+
+
+## 2022-10-12
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_background_service_android` - `v3.0.2`](#flutter_background_service_android---v302)
+ - [`flutter_background_service` - `v2.4.4`](#flutter_background_service---v244)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_background_service` - `v2.4.4`
+
+---
+
+#### `flutter_background_service_android` - `v3.0.2`
+
+ - **FIX**: added proguard for android plugin. ([0d7ac8a6](https://github.com/ekasetiawans/flutter_background_service/commit/0d7ac8a698b339af5931cb3b3e18c4b7f2e2670f))
+
+
+## 2022-09-29
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_background_service` - `v2.4.3`](#flutter_background_service---v243)
+
+---
+
+#### `flutter_background_service` - `v2.4.3`
+
+ - **DOCS**: update README. ([5fc18ced](https://github.com/ekasetiawans/flutter_background_service/commit/5fc18ced43cc7fc1df3209eaa21ef9d424d41779))
+
+
+## 2022-09-29
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - [`flutter_background_service_android` - `v3.0.0`](#flutter_background_service_android---v300)
+
+Packages with other changes:
+
+ - [`flutter_background_service` - `v2.4.2`](#flutter_background_service---v242)
+ - [`flutter_background_service_ios` - `v2.4.0`](#flutter_background_service_ios---v240)
+ - [`flutter_background_service_platform_interface` - `v2.2.0`](#flutter_background_service_platform_interface---v220)
+
+---
+
+#### `flutter_background_service_android` - `v3.0.0`
+
+ - **BREAKING** **FEAT**: autoStartOnBoot now using it's own argument. ([036669dc](https://github.com/ekasetiawans/flutter_background_service/commit/036669dc4383e938f09f88d9d8a248afbf918cf8))
+
+#### `flutter_background_service` - `v2.4.2`
+
+ - **DOCS**: add documentation on configure method. ([b9612afe](https://github.com/ekasetiawans/flutter_background_service/commit/b9612afe593e766e740c69ee01a04b4f9d2ec83a))
+
+#### `flutter_background_service_ios` - `v2.4.0`
+
+ - **FEAT**: onForeground and onBackground now optional. ([9dfcc4d4](https://github.com/ekasetiawans/flutter_background_service/commit/9dfcc4d4f4fea0f3b8ca0fbb47e3d127af3bc68d))
+
+#### `flutter_background_service_platform_interface` - `v2.2.0`
+
+ - **FEAT**: Updated configs. ([7af1961d](https://github.com/ekasetiawans/flutter_background_service/commit/7af1961def1625d7a5314812c1f794e327f53ce7))
+
+
+## 2022-09-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_background_service` - `v2.4.1`](#flutter_background_service---v241)
+ - [`flutter_background_service_android` - `v2.5.4`](#flutter_background_service_android---v254)
+ - [`flutter_background_service_ios` - `v2.3.1`](#flutter_background_service_ios---v231)
+
+---
+
+#### `flutter_background_service` - `v2.4.1`
+
+ - **PERF**: improve handle app refresh ios. ([48e333d7](https://github.com/ekasetiawans/flutter_background_service/commit/48e333d708cb8296c8e6bf1bb151c7cbd95ea7ee))
+
+#### `flutter_background_service_android` - `v2.5.4`
+
+ - **REFACTOR**: remove unused methods. ([ea79ceda](https://github.com/ekasetiawans/flutter_background_service/commit/ea79cedac08089a3d6dafb8d7c785d73b753f80c))
+
+#### `flutter_background_service_ios` - `v2.3.1`
+
+ - **REFACTOR**: remove unused methods. ([ea79ceda](https://github.com/ekasetiawans/flutter_background_service/commit/ea79cedac08089a3d6dafb8d7c785d73b753f80c))
+ - **PERF**: improve handle app refresh ios. ([48e333d7](https://github.com/ekasetiawans/flutter_background_service/commit/48e333d708cb8296c8e6bf1bb151c7cbd95ea7ee))
+
+
+## 2022-09-28
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_background_service` - `v2.4.0`](#flutter_background_service---v240)
+ - [`flutter_background_service_android` - `v2.5.3`](#flutter_background_service_android---v253)
+ - [`flutter_background_service_ios` - `v2.3.0`](#flutter_background_service_ios---v230)
+
+---
+
+#### `flutter_background_service` - `v2.4.0`
+
+ - **REFACTOR**: split code into separate class. ([678226ba](https://github.com/ekasetiawans/flutter_background_service/commit/678226ba08966303713faa718f5a9b46e448c5d1))
+ - **FIX**: ios onBackground. ([4eb6b70d](https://github.com/ekasetiawans/flutter_background_service/commit/4eb6b70d005d43079fa53989a1352ae153ea03ae))
+ - **FEAT**: allow using custom task identifier. ([555a0618](https://github.com/ekasetiawans/flutter_background_service/commit/555a06182230c126c7f0a43f6e94317e62ccb6c3))
+
+#### `flutter_background_service_android` - `v2.5.3`
+
+ - **PERF**: improve entrypoint with args. ([5abacbe5](https://github.com/ekasetiawans/flutter_background_service/commit/5abacbe57f239d9ce1667e643d81d6b17f873f5c))
+
+#### `flutter_background_service_ios` - `v2.3.0`
+
+ - **REFACTOR**: split code into separate class. ([678226ba](https://github.com/ekasetiawans/flutter_background_service/commit/678226ba08966303713faa718f5a9b46e448c5d1))
+ - **PERF**: cancel old schedule. ([bfca5773](https://github.com/ekasetiawans/flutter_background_service/commit/bfca577324345f64faca562e32bad42ed16e92b4))
+ - **FIX**: ios onBackground. ([0b1101be](https://github.com/ekasetiawans/flutter_background_service/commit/0b1101befa66f5d1f200c6a999f7e55c876f2a10))
+ - **FIX**: ios onBackground. ([4eb6b70d](https://github.com/ekasetiawans/flutter_background_service/commit/4eb6b70d005d43079fa53989a1352ae153ea03ae))
+ - **FEAT**: allow using custom task identifier. ([555a0618](https://github.com/ekasetiawans/flutter_background_service/commit/555a06182230c126c7f0a43f6e94317e62ccb6c3))
+
+
+## 2022-09-27
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_background_service_android` - `v2.5.2`](#flutter_background_service_android---v252)
+ - [`flutter_background_service` - `v2.3.10`](#flutter_background_service---v2310)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `flutter_background_service` - `v2.3.10`
+
+---
+
+#### `flutter_background_service_android` - `v2.5.2`
+
+ - **PERF**: using exact alarm for watchdog receiver. ([6dba6670](https://github.com/ekasetiawans/flutter_background_service/commit/6dba6670965a24b9b0657ad0abc793db850a982b))
+
+
+## 2022-09-21
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`flutter_background_service` - `v2.3.9`](#flutter_background_service---v239)
+ - [`flutter_background_service_android` - `v2.5.0`](#flutter_background_service_android---v250)
+ - [`flutter_background_service_ios` - `v2.2.5`](#flutter_background_service_ios---v225)
+
+---
+
+#### `flutter_background_service` - `v2.3.9`
+
+ - **FIX**: added @pragma. ([0f90cc7d](https://github.com/ekasetiawans/flutter_background_service/commit/0f90cc7d6f1ae9b0e2ab6132151e27b88814afe1))
+ - **DOCS**: update FAQ. ([53215976](https://github.com/ekasetiawans/flutter_background_service/commit/532159768bc4a14701940c8166440bb1940aa1b5))
+
+#### `flutter_background_service_android` - `v2.5.0`
+
+ - **FEAT**: added QUICKBOOT_POWERON action to intent-filter. ([46f08173](https://github.com/ekasetiawans/flutter_background_service/commit/46f08173cfb54795fb707bd521d8ed94db75cad5))
+
+#### `flutter_background_service_ios` - `v2.2.5`
+
+ - **FIX**: handle null safety. ([77513387](https://github.com/ekasetiawans/flutter_background_service/commit/775133879a1693154cf14181c3ac780aa7001710))
+
+
 ## 2022-09-20
 
 ### Changes
